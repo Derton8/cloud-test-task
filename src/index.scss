@@ -1,0 +1,10 @@
+@import url(./vendor/fonts/font.scss);
+
+body {
+  margin: 0;
+  font-family: 'SB Sans Interface', sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #f4f4f5;
+  box-sizing: border-box;
+}
