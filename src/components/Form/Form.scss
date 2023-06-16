@@ -4,12 +4,15 @@
 
   &__label {
     max-width: fit-content;
-    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
     margin-bottom: 8px;
     margin-top: 24px;
+
+    &_type_group {
+      margin-bottom: 0;
+    }
   }
 
   &__input {
@@ -18,13 +21,33 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
-    background: rgba(0, 0, 0, 0.04);
+    background: #ffffff;
     border: 1px solid rgba(0, 0, 0, 0.16);
     border-radius: 4px;
     box-sizing: border-box;
+
+    &_size_l {
+      max-width: 300px;
+      width: 100%;
+    }
+
+    &:disabled {
+      background: rgba(0, 0, 0, 0.04);
+      color: rgba(0, 0, 0, 0.48);
+    }
   }
 
-  &__btn-next {
+  &__option {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    padding: 0;
+    border: 0;
+    margin-bottom: 162px;
+    padding-bottom: 123px;
+  }
+
+  &__btn {
     margin-top: 48px;
     max-width: fit-content;
     padding: 12px 16px;
@@ -37,27 +60,173 @@
     line-height: 20px;
     color: white;
     cursor: pointer;
+    box-sizing: border-box;
+    border: 2px solid #5558fa;
+
+    &_type_back {
+      background: transparent;
+      color: #5558fa;
+      gap: 8px;
+    }
 
     &:hover {
       opacity: 0.8;
     }
-
-    &:disabled {
-      background: #2f2f2f;
-      cursor: default;
-      color: grey;
-
-      &:hover {
-        opacity: 1;
-      }
-    }
   }
 
   &__error {
+    display: block;
     margin-top: 8px;
     font-weight: 400;
     font-size: 12px;
     line-height: 16px;
     color: rgba(255, 0, 0);
+
+    &_with_counter {
+      display: inline-block;
+    }
+  }
+
+  &__container {
+    padding-top: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__checkbox {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 4px;
+    border: 1.5px solid rgba(0, 0, 0, 0.24);
+    margin-right: 8px;
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+
+    &::before {
+      content: '';
+      width: 0.5em;
+      height: 0.5em;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em #5558fa;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  &__variant-row {
+    display: flex;
+    align-items: center;
+  }
+
+  &__checkbox-label {
+    max-width: fit-content;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+  }
+
+  &__radio {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(0, 0, 0, 0.24);
+    margin-right: 10px;
+    box-sizing: border-box;
+    display: grid;
+    place-content: center;
+
+    &::before {
+      content: '';
+      width: 0.5em;
+      height: 0.5em;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: 120ms transform ease-in-out;
+      box-shadow: inset 1em 1em #5558fa;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+  }
+
+  &__variants-container {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__delete-icon {
+    margin-left: 16px;
+    width: 20px;
+    height: 20px;
+    border: 0;
+    background: url(../../images/remove-btn-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
+
+  &__adv {
+    margin-bottom: 8px;
+  }
+
+  &__add-btn {
+    width: 44px;
+    height: 44px;
+    border: 2px solid #5558fa;
+    border-radius: 4px;
+    background: url(../../images/add-btn-icon.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    object-fit: cover;
+    cursor: pointer;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__textarea {
+    padding: 12px;
+    min-width: 100%;
+    max-width: 100%;
+    min-height: 84px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    background: #ffffff;
+    border: 1px solid rgba(0, 0, 0, 0.16);
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+  &__counter {
+    margin-top: 8px;
+    float: right;
+    display: inline;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    color: rgba(0, 0, 0, 0.48);
   }
 }

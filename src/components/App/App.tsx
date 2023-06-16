@@ -1,12 +1,15 @@
-import Header from '../Header/Header';
+import { Route, Routes } from 'react-router-dom';
 import Main from '../Main/Main';
 import './App.scss';
+import CreateForm from '../Form/CreateForm/CreateForm';
 
 export default function App() {
   return (
     <div className='App'>
-      <Header />
-      <Main />
+      <Routes>
+        <Route index element={<Main />}></Route>
+        <Route path='/create' element={<CreateForm />}></Route>
+      </Routes>
     </div>
   );
 }
