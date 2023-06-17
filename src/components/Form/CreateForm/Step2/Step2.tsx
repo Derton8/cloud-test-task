@@ -1,26 +1,36 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import { INIT_STEP2_DATA, Step2FormData, StepProps } from '../../../../utils/constants';
+import { Step2FormData, StepProps } from '../../../../utils/constants';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { step2Schema } from '../../../../utils/validation';
+import { useAppDispatch, useAppSelector } from '../../../../utils/reduxHook';
+import { setStep2Fields } from './step2Slice';
 
 export default function Step2({ prevStep, nextStep }: StepProps) {
+  const step2State = useAppSelector((state) => state.step2Fields.step2);
+  const dispatch = useAppDispatch();
+
   const {
     register,
     control,
     handleSubmit,
     formState: { errors },
+    getValues,
   } = useForm<Step2FormData>({
     mode: 'onTouched',
-    defaultValues: INIT_STEP2_DATA,
+    defaultValues: step2State,
     resolver: yupResolver(step2Schema),
   });
 
   const onSubmit = handleSubmit((data: Step2FormData) => {
+    console.log(typeof data.checkbox[0]);
+    console.log(JSON.stringify(data));
     const advantages = data.advantages.map((field) => field.name);
-    const checkbox = data.checkboxes.map((field) => +field);
+    const checkbox = data.checkbox.map((field) => +field);
     const radio = +data.radio;
+    const formatedData = { advantages, checkbox, radio };
+    console.log(formatedData);
 
-    alert(JSON.stringify({ advantages, checkbox, radio }));
+    dispatch(setStep2Fields(data));
     nextStep();
   });
 
@@ -28,6 +38,12 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
     name: 'advantages',
     control,
   });
+
+  function handleClickBack() {
+    const values = getValues();
+    dispatch(setStep2Fields(values));
+    prevStep();
+  }
 
   return (
     <form className='form' name='mainForm' onSubmit={onSubmit} noValidate>
@@ -74,9 +90,9 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
         <li className='form__variant-row'>
           <input
             className='form__checkbox'
-            {...register('checkboxes')}
+            {...register('checkbox')}
             type='checkbox'
-            name='checkboxes'
+            name='checkbox'
             id='field-checkbox-group-option-1'
             placeholder='Name'
             value={1}
@@ -88,9 +104,9 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
         <li className='form__variant-row'>
           <input
             className='form__checkbox'
-            {...register('checkboxes')}
+            {...register('checkbox')}
             type='checkbox'
-            name='checkboxes'
+            name='checkbox'
             id='field-checkbox-group-option-2'
             placeholder='Name'
             value={2}
@@ -102,9 +118,9 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
         <li className='form__variant-row'>
           <input
             className='form__checkbox'
-            {...register('checkboxes')}
+            {...register('checkbox')}
             type='checkbox'
-            name='checkboxes'
+            name='checkbox'
             id='field-checkbox-group-option-3'
             placeholder='Name'
             value={3}
@@ -115,7 +131,7 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
         </li>
       </ul>
 
-      {errors.checkboxes && <span className='form__error'>{errors.checkboxes?.message}</span>}
+      {errors.checkbox && <span className='form__error'>{errors.checkbox?.message}</span>}
       <label className='form__label form__label_type_group'>Radio group</label>
       <ul className='form__variants-container'>
         <li className='form__variant-row'>
@@ -163,7 +179,7 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
         <button
           className='form__btn form__btn_type_back'
           type='button'
-          onClick={prevStep}
+          onClick={handleClickBack}
           id='button-back'
         >
           Назад

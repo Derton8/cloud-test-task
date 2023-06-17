@@ -1,21 +1,28 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import { withHookFormMask } from 'use-mask-input';
-import { INIT_DATA } from '../../../utils/constants';
 import { mainSchema } from '../../../utils/validation';
 import { useNavigate } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../../utils/reduxHook';
+import { setMainFields } from './mainFormSlice';
 
 export default function MainForm() {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const main_state = useAppSelector((state) => state.mainFilelds.main);
+
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: 'onTouched', defaultValues: INIT_DATA, resolver: yupResolver(mainSchema) });
-
-  const navigate = useNavigate();
+  } = useForm({
+    mode: 'onTouched',
+    defaultValues: main_state,
+    resolver: yupResolver(mainSchema),
+  });
 
   const onSubmit = handleSubmit((data) => {
-    alert(JSON.stringify(data));
+    dispatch(setMainFields(data));
     navigate('/create', {
       replace: true,
     });
@@ -36,9 +43,7 @@ export default function MainForm() {
         required
         disabled
       />
-      {errors.phone && (
-        <span className='form__error form-error-phone'>{errors.phone?.message}</span>
-      )}
+      {errors?.phone && <span className='form__error'>{errors?.phone?.message}</span>}
       <label className='form__label' htmlFor='field-email'>
         Email
       </label>
@@ -52,9 +57,7 @@ export default function MainForm() {
         required
         disabled
       />
-      {errors.email && (
-        <span className='form__error form-error-email'>{errors.email?.message}</span>
-      )}
+      {/* {errors.email && <span className='form__error'>{errors.email?.message}</span>} */}
       <button className='form__btn' type='submit'>
         Начать
       </button>

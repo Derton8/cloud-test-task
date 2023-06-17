@@ -35,6 +35,11 @@
       background: rgba(0, 0, 0, 0.04);
       color: rgba(0, 0, 0, 0.48);
     }
+
+    &:focus {
+      box-shadow: 0 0 5px 0 rgba(6, 8, 173, 0.466);
+      outline: 0;
+    }
   }
 
   &__option {
@@ -211,6 +216,7 @@
     min-width: 100%;
     max-width: 100%;
     min-height: 84px;
+    max-height: 300px;
     font-weight: 400;
     font-size: 14px;
     line-height: 20px;
@@ -218,6 +224,11 @@
     border: 1px solid rgba(0, 0, 0, 0.16);
     border-radius: 4px;
     box-sizing: border-box;
+
+    &:focus {
+      box-shadow: 0 0 5px 0 rgba(6, 8, 173, 0.466);
+      outline: 0;
+    }
   }
 
   &__counter {

@@ -31,13 +31,13 @@ export type Step2FormData = {
   advantages: {
     name: string;
   }[];
-  checkboxes: number[];
+  checkbox: number[];
   radio: number;
 };
 
 export const INIT_STEP2_DATA: Step2FormData = {
   advantages: [{ name: '' }, { name: '' }, { name: '' }],
-  checkboxes: [],
+  checkbox: [],
   radio: 0,
 };
 

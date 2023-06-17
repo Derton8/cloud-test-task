@@ -1,23 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import { INIT_STEP3_DATA, StepProps, Step3FormData } from '../../../../utils/constants';
+import { StepProps, Step3FormData } from '../../../../utils/constants';
 import { step3Schema } from '../../../../utils/validation';
+import { useAppDispatch, useAppSelector } from '../../../../utils/reduxHook';
+import { setStep3Fields } from './step3Slice';
 
 export default function Step3({ prevStep }: StepProps) {
+  const step3State = useAppSelector((state) => state.step3Fields.step3);
+  const dispatch = useAppDispatch();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
     watch,
+    getValues,
   } = useForm<Step3FormData>({
     mode: 'onTouched',
-    defaultValues: INIT_STEP3_DATA,
+    defaultValues: step3State,
     resolver: yupResolver(step3Schema),
   });
 
   const onSubmit = handleSubmit((data) => {
     alert(JSON.stringify(data));
+    dispatch(setStep3Fields(data));
   });
+
+  function handleClickBack() {
+    const values = getValues();
+    dispatch(setStep3Fields(values));
+    prevStep();
+  }
 
   return (
     <form className='form' name='mainForm' onSubmit={onSubmit} noValidate>
@@ -43,7 +56,7 @@ export default function Step3({ prevStep }: StepProps) {
         <button
           className='form__btn form__btn_type_back'
           type='button'
-          onClick={prevStep}
+          onClick={handleClickBack}
           id='button-back'
         >
           Назад
