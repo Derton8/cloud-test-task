@@ -1,9 +1,9 @@
 import { useForm, useFieldArray } from 'react-hook-form';
-import { Step2FormData, StepProps } from '../../../../utils/constants';
+import { StepProps } from '../../../../utils/constants';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { step2Schema } from '../../../../utils/validation';
 import { useAppDispatch, useAppSelector } from '../../../../utils/reduxHook';
-import { setStep2Fields } from './step2Slice';
+import { Step2FormData, setStep2Fields } from './step2Slice';
 
 export default function Step2({ prevStep, nextStep }: StepProps) {
   const step2State = useAppSelector((state) => state.step2Fields.step2);
@@ -22,14 +22,6 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
   });
 
   const onSubmit = handleSubmit((data: Step2FormData) => {
-    console.log(typeof data.checkbox[0]);
-    console.log(JSON.stringify(data));
-    const advantages = data.advantages.map((field) => field.name);
-    const checkbox = data.checkbox.map((field) => +field);
-    const radio = +data.radio;
-    const formatedData = { advantages, checkbox, radio };
-    console.log(formatedData);
-
     dispatch(setStep2Fields(data));
     nextStep();
   });
@@ -58,7 +50,7 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
               })}
               defaultValue={field.name}
               type='text'
-              id='field-advatages-1'
+              id={`field-advatages-${index + 1}`}
               placeholder='Advantage'
               required
             />

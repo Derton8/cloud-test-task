@@ -3,7 +3,7 @@ import Main from '../Main/Main';
 import './App.scss';
 import CreateForm from '../Form/CreateForm/CreateForm';
 
-export default function App() {
+const App = () => {
   return (
     <div className='App'>
       <Routes>
@@ -13,4 +13,6 @@ export default function App() {
       </Routes>
     </div>
   );
-}
+};
+
+export default App;

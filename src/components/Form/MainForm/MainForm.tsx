@@ -5,8 +5,9 @@ import { mainSchema } from '../../../utils/validation';
 import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../../utils/reduxHook';
 import { setMainFields } from './mainFormSlice';
+import { FC } from 'react';
 
-export default function MainForm() {
+const MainForm: FC = () => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const main_state = useAppSelector((state) => state.mainFilelds.main);
@@ -57,10 +58,11 @@ export default function MainForm() {
         required
         disabled
       />
-      {/* {errors.email && <span className='form__error'>{errors.email?.message}</span>} */}
+      {errors.email && <span className='form__error'>{errors.email?.message}</span>}
       <button className='form__btn' type='submit'>
         Начать
       </button>
     </form>
   );
-}
+};
+export default MainForm;

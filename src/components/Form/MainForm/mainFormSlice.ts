@@ -5,7 +5,7 @@ type mainFields = {
   email: string;
 };
 
-type main = {
+export type main = {
   main: mainFields;
 };
 
@@ -20,18 +20,15 @@ const mainFormSlice = createSlice({
   name: 'mainFields',
   initialState,
   reducers: {
-    // resetStore() {
-    //   return initialState;
-    // },
     setMainFields(state, action) {
       state.main = action.payload;
     },
-    // getFields(state) {
-    //   return state;
-    // },
+    resetStore() {
+      return initialState;
+    },
   },
 });
 
-export const { setMainFields } = mainFormSlice.actions;
+export const { setMainFields, resetStore } = mainFormSlice.actions;
 
 export default mainFormSlice.reducer;

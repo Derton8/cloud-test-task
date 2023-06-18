@@ -53,12 +53,12 @@
   }
 
   &__btn {
+    display: block;
     margin-top: 48px;
     max-width: fit-content;
+    height: 44px;
     padding: 12px 16px;
-    gap: 8px;
     background: #5558fa;
-    border: 0;
     border-radius: 4px;
     font-weight: 400;
     font-size: 14px;
@@ -71,7 +71,6 @@
     &_type_back {
       background: transparent;
       color: #5558fa;
-      gap: 8px;
     }
 
     &:hover {

@@ -1,7 +1,8 @@
+import { FC } from 'react';
 import avatarUrl from '../../images/header-avatar.jpg';
 import './Header.scss';
 
-export default function Header() {
+const Header: FC = () => {
   return (
     <header className='header'>
       <div className='header__container'>
@@ -51,4 +52,6 @@ export default function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

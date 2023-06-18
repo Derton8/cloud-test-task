@@ -21,7 +21,6 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
   });
 
   const onSubmit = handleSubmit((data) => {
-    console.log(data);
     dispatch(setStep1Fields(data));
     nextStep();
   });

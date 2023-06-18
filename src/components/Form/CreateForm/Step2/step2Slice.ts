@@ -1,6 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-type Step2FormData = {
+export type Step2FormData = {
   advantages: {
     name: string;
   }[];
@@ -27,9 +27,12 @@ const step2Slice = createSlice({
     setStep2Fields(state, action) {
       state.step2 = action.payload;
     },
+    resetStore() {
+      return initialState;
+    },
   },
 });
 
-export const { setStep2Fields } = step2Slice.actions;
+export const { setStep2Fields, resetStore } = step2Slice.actions;
 
 export default step2Slice.reducer;

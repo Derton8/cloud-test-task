@@ -1,9 +1,10 @@
+import { FC } from 'react';
 import '../Form/Form.scss';
 import MainForm from '../Form/MainForm/MainForm';
 import Header from '../Header/Header';
 import './Main.scss';
 
-export default function Main() {
+const Main: FC = () => {
   return (
     <>
       <Header />
@@ -12,4 +13,6 @@ export default function Main() {
       </main>
     </>
   );
-}
+};
+
+export default Main;
