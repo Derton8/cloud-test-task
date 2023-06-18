@@ -16,7 +16,7 @@ export default function InfoTooltip(props: InfoTooltipProps) {
         <div className='popup__container'>
           <h2 className='popup__title'>Форма успешно отправлена</h2>
           <SuccessIcon className='popup__icon' />
-          <button className='popup__close-btn' type='button' onClick={onClose}>
+          <button className='popup__close-btn' type='button' onClick={onClose} id='button-to-main'>
             На главную
           </button>
         </div>
@@ -31,6 +31,7 @@ export default function InfoTooltip(props: InfoTooltipProps) {
             className='popup__close-btn popup__close-btn_type_error'
             type='button'
             onClick={onClose}
+            id='button-close'
           >
             Закрыть
           </button>

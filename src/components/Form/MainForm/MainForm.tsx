@@ -59,7 +59,7 @@ const MainForm: FC = () => {
         disabled
       />
       {errors.email && <span className='form__error'>{errors.email?.message}</span>}
-      <button className='form__btn' type='submit'>
+      <button className='form__btn' type='submit' id='button-start'>
         Начать
       </button>
     </form>

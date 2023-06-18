@@ -89,8 +89,12 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
         <option value='' disabled hidden>
           Не выбрано
         </option>
-        <option className='form__option'>man</option>
-        <option className='form__option'>woman</option>
+        <option className='form__option' id='field-sex-option-man'>
+          man
+        </option>
+        <option className='form__option' id='field-sex-option-woman'>
+          woman
+        </option>
       </select>
       {errors.sex && <span className='form__error'>{errors.sex?.message}</span>}
       <div className='form__container'>
