@@ -39,12 +39,10 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
       <input
         className='form__input form__input_size_l'
         {...register('nickname')}
-        type='text'
         name='nickname'
         id='field-nickname'
         placeholder='Nickname'
         maxLength={30}
-        required
       />
       {errors.nickname && <span className='form__error'>{errors.nickname?.message}</span>}
       <label className='form__label' htmlFor='field-name'>
@@ -53,12 +51,10 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
       <input
         className='form__input form__input_size_l'
         {...register('name')}
-        type='text'
         name='name'
         id='field-name'
         placeholder='Name'
         maxLength={50}
-        required
       />
       {errors.name && <span className='form__error'>{errors.name?.message}</span>}
       <label className='form__label' htmlFor='field-sername'>
@@ -67,12 +63,10 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
       <input
         className='form__input form__input_size_l'
         {...register('sername')}
-        type='text'
         name='sername'
         id='field-sername'
         placeholder='Surname'
         maxLength={50}
-        required
       />
       {errors.sername && <span className='form__error'>{errors.sername?.message}</span>}
       <label className='form__label' htmlFor='field-sex'>
@@ -84,7 +78,6 @@ export default function Step1({ prevStep, nextStep }: StepProps) {
         name='sex'
         id='field-sex'
         placeholder='sex'
-        required
       >
         <option value='' disabled hidden>
           Не выбрано

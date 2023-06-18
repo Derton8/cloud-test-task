@@ -49,10 +49,9 @@ export default function Step2({ prevStep, nextStep }: StepProps) {
                 required: true,
               })}
               defaultValue={field.name}
-              type='text'
               id={`field-advatages-${index + 1}`}
               placeholder='Advantage'
-              required
+              maxLength={50}
             />
             <button
               className='form__delete-icon'

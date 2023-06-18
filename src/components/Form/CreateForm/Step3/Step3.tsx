@@ -83,7 +83,6 @@ export default function Step3({ prevStep }: StepProps) {
           id='field-about'
           placeholder='Расскажите о себе'
           maxLength={200}
-          required
         />
         <div>
           {errors.about && (
