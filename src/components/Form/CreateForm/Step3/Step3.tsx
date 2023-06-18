@@ -14,10 +14,10 @@ import { useNavigate } from 'react-router-dom';
 
 export default function Step3({ prevStep }: StepProps) {
   const step3State = useAppSelector((state) => state.step3Fields.step3);
+  const isSuccess = useAppSelector((state) => state.step3Fields.success);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
-  const [infoTooltipSuccess, setInfoTooltipSuccess] = useState(false);
 
   const resets = [resetMain, resetStep1, resetStep2, resetStep3];
   const { submitForm } = useFormSubmit();
@@ -42,11 +42,9 @@ export default function Step3({ prevStep }: StepProps) {
         submitForm(cloneData)
           .then((response) => {
             if (response.type === 'step3Fields/sendFormData/rejected') {
-              setInfoTooltipSuccess(false);
               setIsInfoTooltipOpen(true);
               return console.log('There was an error', response);
             }
-            setInfoTooltipSuccess(true);
             setIsInfoTooltipOpen(true);
           })
           .catch((err: any) => {
@@ -63,7 +61,7 @@ export default function Step3({ prevStep }: StepProps) {
   }
 
   function closeInfoTooltip() {
-    if (infoTooltipSuccess) {
+    if (isSuccess) {
       resets.forEach((reset) => dispatch(reset()));
       navigate('/', { replace: true });
       setIsInfoTooltipOpen(false);
@@ -110,7 +108,7 @@ export default function Step3({ prevStep }: StepProps) {
       <InfoTooltip
         isOpen={isInfoTooltipOpen}
         onClose={closeInfoTooltip}
-        tooltipSuccess={infoTooltipSuccess}
+        tooltipSuccess={isSuccess}
       />
     </>
   );
