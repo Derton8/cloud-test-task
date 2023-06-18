@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import Step1 from './Step1/Step1';
@@ -10,6 +10,14 @@ import Stepper from '../../Stepper/Stepper';
 export default function CreateForm() {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(1);
+
+  const entries = window.performance.getEntries();
+
+  useEffect(() => {
+    if (entries.length < 10) {
+      navigate('/', { replace: true });
+    }
+  }, [entries.length, navigate]);
 
   function nextStep() {
     setCurrentStep(currentStep + 1);

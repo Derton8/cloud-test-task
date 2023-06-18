@@ -1,3 +1,7 @@
 .create {
   padding: 66px 110px 80px;
+
+  @media screen and (max-width: 600px) {
+    padding: 33px 20px 40px;
+  }
 }
