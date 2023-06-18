@@ -3,7 +3,7 @@
 
   &__title {
     margin: 0;
-    padding-bottom: 8px;
+    padding-bottom: var(--space-2);
     font-weight: 600;
     font-size: 20px;
     line-height: 26px;
@@ -14,7 +14,7 @@
     width: 80px;
     height: 80px;
     object-fit: cover;
-    border-radius: 100%;
+    border-radius: var(--border-circle);
     margin-right: 24px;
   }
 
@@ -47,8 +47,8 @@
     font-size: 12px;
     line-height: 16px;
     text-decoration: none;
-    color: #5558fa;
-    transition: opacity 0.2s ease 0.1s;
+    color: var(--blue-accent);
+    transition: var(--transition-opacity);
 
     &:hover {
       opacity: 0.7;
@@ -58,7 +58,7 @@
   &__link-icon {
     align-self: center;
     display: inline-block;
-    margin-right: 4px;
+    margin-right: var(--space-1);
     width: 16px;
     height: 16px;
     align-self: center;

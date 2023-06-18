@@ -1,9 +1,10 @@
-@import url(./vendor/fonts/font.scss);
+@import url(../vendor/fonts/font.scss);
+@import './variables.scss';
 
 body {
   font-family: 'SB Sans Interface', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: #f4f4f5;
+  background: var(--body-bg-color);
   box-sizing: border-box;
 }

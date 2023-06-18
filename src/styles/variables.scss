@@ -1,0 +1,37 @@
+:root {
+  --body-bg-color: #f4f4f5;
+  --form-bg-color: #ffffff;
+
+  // Colors
+  --grey-350: #a6a6a6;
+  --grey-800: #333333;
+  --grey-600: #666666;
+  --blue-accent: #5558fa;
+  --red-accent: rgba(255, 0, 0);
+  --black-alpha-4: rgba(0, 0, 0, 0.04);
+  --black-alpha-8: rgba(0, 0, 0, 0.08);
+  --black-alpha-16: rgba(0, 0, 0, 0.16);
+  --black-alpha-24: rgba(0, 0, 0, 0.24);
+  --black-alpha-48: rgba(0, 0, 0, 0.48);
+  --blue-alpha: rgba(54, 57, 224, 0.678);
+
+  // Transitions
+  --transition: 0.1s;
+  --transition-opacity: opacity var(--transition) ease 0.1s;
+
+  // Spaces
+  --space-unit: 4px;
+  --space-1: calc(1 * var(--space-unit)); // 4
+  --space-2: calc(2 * var(--space-unit)); // 8
+  --space-3: calc(3 * var(--space-unit)); // 12
+  --space-4: calc(4 * var(--space-unit)); // 16
+  --space-5: calc(5 * var(--space-unit)); // 20
+  --space-6: calc(6 * var(--space-unit)); // 24
+
+  // Borders
+  --border-s: 4px;
+  --border-m: 12px;
+  --border-l: 24px;
+  --border-circle: 50%;
+  --border-color: var(--grey-200);
+}
