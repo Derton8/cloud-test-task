@@ -89,7 +89,7 @@ export default function Step3({ prevStep }: StepProps) {
           {errors.about && (
             <span className='form__error form__error_with_counter'>{errors.about?.message}</span>
           )}
-          <span className='form__counter'> {watch('about').length}/200</span>
+          <span className='form__counter'> {watch('about').replace(/\s+/g, '').length}</span>
         </div>
         <div className='form__container'>
           <button
